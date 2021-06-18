@@ -1,0 +1,42 @@
+<form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+
+  <h2>Reactive form</h2>
+ 
+  <p>
+    <label for="name">Name </label>
+    <input type="text" id="name" name="name" formControlName="name"><br><br>
+  </p>
+
+  <p>
+    <label for="name">Age </label>
+    <input type="text" id="name" name="age" formControlName="age"><br><br>
+  </p>
+
+  <p>
+    <label for="name">Address </label>
+    <input type="text" id="name" name="add" formControlName="add"><br><br>
+  </p>
+ 
+ 
+  Skills:
+  <input type="text" formControlName="skill" name="skill">
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; let i=index">
+      <div [formGroupName]="i">
+        <input type="text" formControlName="skill" name="skill">
+        <button (click)="removeSkill(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button type="button" (click)="addSkills()">Add title</button>
+  </p>
+ 
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+ 
+</form>
+ 
+ 
